@@ -1,0 +1,47 @@
+group 'GradSchool'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext {
+        springBootVersion = '1.5.7.RELEASE'
+    }
+    repositories {
+        // NOTE: You should declare only repositories that you need here
+        mavenLocal()
+        mavenCentral()
+        maven { url "http://repo.spring.io/release" }
+    }
+    dependencies {
+        classpath(
+                "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        )
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+version = springBootVersion
+group = 'org.springframework.boot'
+
+repositories {
+    // NOTE: You should declare only repositories that you need here
+    mavenLocal()
+    mavenCentral()
+    maven { url "http://repo.spring.io/release" }
+}
+
+dependencies {
+    compile(
+            "org.springframework.boot:spring-boot-starter",
+            'org.springframework.boot:spring-boot-starter-actuator', //this is for diagnostics
+            'org.springframework.boot:spring-boot-starter-thymeleaf',
+    )
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+
